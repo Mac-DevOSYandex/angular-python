@@ -15,7 +15,7 @@ export class AppSocketService extends Socket {
 
   constructor() {
     super({
-      url: 'ws://localhost:8080',
+      url: 'ws://localhost:3333',
       options: { transports: ['websocket']}
     });
 

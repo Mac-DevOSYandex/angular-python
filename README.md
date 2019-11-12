@@ -34,3 +34,15 @@ Run `npm start frontend` for a client dev server. Navigate to http://localhost:4
 ## Generate Backend server
 
 Creates a data stream between Python & Nodejs With Nestjs TypeORM database connection to PostgreSql/Sqlite.
+
+## Documentation
+
+### Generation
+
+Following the official documentation, you can generate your documentation using the  command string below(npm 6 required):
+
+`
+$ npx compodoc -p tsconfig.json -s
+`
+
+Then open your browser and navigate to http://localhost:8080. You should see an initial Nest CLI project:
