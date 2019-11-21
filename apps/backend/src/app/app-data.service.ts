@@ -24,7 +24,7 @@ export class AppDataService {
     );
   }
 
-  public input(input: any) {
+  public input(input: any): void {
     this.queue.push(input);
     if (this.ready) {
       this.process()

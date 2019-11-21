@@ -1,12 +1,22 @@
-import { MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer, WsResponse} from '@nestjs/websockets';
+import {
+  MessageBody, //
+  SubscribeMessage,
+  WebSocketGateway,
+  WebSocketServer,
+  WsResponse,
+  OnGatewayConnection,
+  OnGatewayDisconnect,
+
+} from '@nestjs/websockets';
 import { Logger } from '@nestjs/common';
 
 import { Server, Client } from 'socket.io';
 import { AppDataService } from './app-data.service';
+import { Observable } from 'rxjs';
 // import { PythonService } from './python.service';
 
 @WebSocketGateway({ transports: ['websocket']})
-export class AppGateway {
+export class AppGateway  {
 
   private readonly logger = new Logger(AppGateway.name, true);
 
@@ -28,7 +38,7 @@ export class AppGateway {
     }
 
   @SubscribeMessage('input')
-  Input(@MessageBody() data: {a: number, b: number}) {
+  Input(@MessageBody() data: {a: number, b: number}): void {
     // this.logger.log(`DATA RECEIVED: ${JSON.stringify(data)}`);
     // this.server.emit('output', {ans: data.a * data.b});
     this.appDataService.input(data);
@@ -36,12 +46,7 @@ export class AppGateway {
   handleConnection( client: Client, ..._arg: any[]): void {
     this.logger.log(`CLIENT: ${client.id} CONNECTED`);
   }
-  handleDisconnection( client: Client): void {
+  handleDisconnect( client: Client): void {
     this.logger.log(`CLIENT: ${client.id} DISCONNECTED`);
   }
-
-  // @Get()
-  // getData() {
-  //   return this.appService.getData();
-  // }
 }

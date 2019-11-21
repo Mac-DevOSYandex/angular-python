@@ -1,17 +1,18 @@
 import { Module } from '@nestjs/common';
 
 import { AppGateway } from './app.gateway';
-// import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppDataService } from './app-data.service';
 import { PythonService } from './python.service';
-// import { Connection } from 'typeorm';
+import { BlogModule } from './blog/blog.module';
 
 @Module({
-  // imports: [ TypeOrmModule.forRoot() ],
-  controllers: [],
-  providers: [AppDataService, AppGateway, PythonService],
+    imports: [BlogModule],
+    controllers: [],
+    providers: [
+        AppDataService, //
+        AppGateway,
+        PythonService
+    ]
 })
-export class AppModule {
-
-  // constructor(private readonly connection: Connection) {}
-}
+export class AppModule {}
