@@ -1,40 +1,19 @@
-import {
-  Entity, //
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity('post')
-export class Post {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+@Entity()
+export class PostEntity {
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column({ type: 'varchar', nullable: false, length: 500 })
-  title: string;
+    @Column({ type: 'varchar', nullable: false, length: 500 })
+    title: string;
 
-  // @Column()
-  // author: string;
+    @Column({ type: 'varchar', nullable: true, length: 500 })
+    subTitle: string;
 
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+    @Column('text')
+    imageUrl: string;
 
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
-
-  @Column({ type: 'text', nullable: false })
-  description: string;
-
-  @Column()
-  avatar: string;
-
-  @Column('int')
-  views: number;
-
-  @Column('int')
-  likes: number;
-
-  @Column()
-  isPublished: boolean;
+    @Column('text')
+    content: string;
 }

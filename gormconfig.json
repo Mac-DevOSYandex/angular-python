@@ -1,0 +1,13 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "blog-user",
+  "password": "p@ssw0rd",
+  "database": "blog-app",
+  "logging": true,
+  "entities": ["/apps/**/*.entity{.ts,.js}"],
+  "migrations": ["/apps/**/*.migration{.ts,.js}"],
+  "subscribers": ["/apps/**/*.subscriber{.ts,.js}"],
+  "synchronize": true
+}
